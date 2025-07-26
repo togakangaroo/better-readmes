@@ -12,5 +12,7 @@ dependencies = [
     "ipykernel>=6.30.0",
     "jupyter>=1.1.1",
     "python-dotenv>=1.1.1",
+    "tree-sitter>=0.25.0",
+    "tree-sitter-python>=0.23.6",
     "wtforms>=3.2.1",
 ]
