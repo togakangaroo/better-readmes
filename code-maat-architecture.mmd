@@ -1,0 +1,51 @@
+graph TD
+    A[Command Line Interface<br/>cmd_line.clj] --> B[Application Core<br/>app.clj]
+    
+    B --> C[VCS Parsers]
+    C --> C1[Git Parser<br/>git.clj]
+    C --> C2[Git2 Parser<br/>git2.clj]
+    C --> C3[SVN Parser<br/>svn.clj]
+    C --> C4[Mercurial Parser<br/>mercurial.clj]
+    C --> C5[Perforce Parser<br/>p4.clj]
+    C --> C6[TFS Parser<br/>tfs.clj]
+    
+    C --> D[Parser Utilities]
+    D --> D1[XML Parser<br/>xml.clj]
+    D --> D2[Time Parser<br/>time_parser.clj]
+    D --> D3[Hiccup Parser<br/>hiccup_based_parser.clj]
+    
+    B --> E[Data Processing]
+    E --> E1[Dataset Layer<br/>dataset.clj]
+    E --> E2[Grouper<br/>grouper.clj]
+    E --> E3[Time-based Grouper<br/>time_based_grouper.clj]
+    E --> E4[Team Mapper<br/>team_mapper.clj]
+    
+    E --> F[Analysis Modules]
+    F --> F1[Author Analysis<br/>authors.clj]
+    F --> F2[Coupling Analysis<br/>logical_coupling.clj]
+    F --> F3[Churn Analysis<br/>churn.clj]
+    F --> F4[Code Age Analysis<br/>code_age.clj]
+    F --> F5[Communication Analysis<br/>communication.clj]
+    F --> F6[Effort Analysis<br/>effort.clj]
+    F --> F7[Entity Analysis<br/>entities.clj]
+    F --> F8[Sum of Coupling<br/>sum_of_coupling.clj]
+    F --> F9[Summary Analysis<br/>summary.clj]
+    F --> F10[Message Analysis<br/>commit_messages.clj]
+    
+    F --> G[Output Layer]
+    G --> G1[CSV Output<br/>csv.clj]
+    G --> G2[Output Filters<br/>filters.clj]
+    
+    H[VCS Log Files<br/>Git/SVN/Hg/P4/TFS] --> C
+    G --> I[Analysis Results<br/>CSV Format]
+    
+    subgraph "External Dependencies"
+        J[Incanter<br/>Statistical Computing]
+        K[Instaparse<br/>Grammar Parsing]
+        L[Clojure Libraries<br/>CSV, Time, CLI]
+    end
+    
+    E1 --> J
+    D3 --> K
+    A --> L
+    G1 --> L
